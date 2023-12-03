@@ -12,7 +12,6 @@ public class Wall implements Structure {
     @Override
     public Optional<Block> findBlockByColor(String color) {
         for (Block block : blocks) {
-            //if (block.getColor().equals(color))
             if (color.equals(block.getColor()))
                 return Optional.of(block);
             if (block instanceof CompositeBlock) {
