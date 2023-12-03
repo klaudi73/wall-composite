@@ -12,7 +12,8 @@ public class Wall implements Structure {
     @Override
     public Optional<Block> findBlockByColor(String color) {
         for (Block block : blocks) {
-            if (block.getColor().equals(color))
+            //if (block.getColor().equals(color))
+            if (color.equals(block.getColor()))
                 return Optional.of(block);
             if (block instanceof CompositeBlock) {
                 Optional<Block> nestedBlock = ((CompositeBlock) block).getBlocks()
@@ -32,7 +33,7 @@ public class Wall implements Structure {
         List<Block> blockList = new ArrayList<>();
 
         for (Block block : blocks) {
-            if (block.getMaterial().equals(material))
+            if (material.equals(block.getMaterial()))
                 blockList.add(block);
             if (block instanceof CompositeBlock) {
                 blockList.addAll(((CompositeBlock) block).getBlocks()
