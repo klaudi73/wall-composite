@@ -39,8 +39,8 @@ class WallTest {
         Block block5 = new TestBlock("Silver", "Steel");
         Block block6 = new TestBlock("Brown", "Wood");
         CompositeBlock compositeBlock = new WallTest.TestCompositeBlock(Arrays.asList(block1, block2, block3));
-
-        List<Block> blocks = Arrays.asList(block4, compositeBlock, block5, block6);
+        CompositeBlock compositeBlock2 = new WallTest.TestCompositeBlock(Arrays.asList(block4, block5, block6));
+        List<Block> blocks = Arrays.asList(block4, compositeBlock, block5, compositeBlock2, block6);
         Wall wall = new Wall(blocks);
 
         Optional<Block> result = wall.findBlockByColor("Brown");
@@ -187,13 +187,14 @@ class WallTest {
         Block block6 = new TestBlock("Brown", "Wood");
         CompositeBlock compositeBlock = new WallTest.TestCompositeBlock(
                 Arrays.asList(block1, block2, block3, block4, block5, block6));
-
-        List<Block> blocks = Arrays.asList(block1, compositeBlock);
+        CompositeBlock compositeBlock2 = new WallTest.TestCompositeBlock(
+                Arrays.asList(block6, block5, block3));
+        List<Block> blocks = Arrays.asList(block1, compositeBlock, block2,  compositeBlock2, block4);
         Wall wall = new Wall(blocks);
 
         int result = wall.count();
 
-        assertEquals(7, result);
+        assertEquals(12, result);
     }
 
 
